@@ -1,0 +1,45 @@
+<div class="mainArea">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="box column is-one-third">
+        <!-- Başlık -->
+        <h1 class="title has-text-centered">Harf Eşleştirme</h1>
+        
+        <!-- Yükleniyor animasyonu -->
+        <div class="loader">
+          <div class="loader-square"> <h1>Mehmet </h1></div>
+          <div class="loader-square"><h1>Can </h1></div>
+          <div class="loader-square"><h1>Ayan</h1></div>
+          <div class="loader-square"></div>
+          <div class="loader-square"></div>
+          <div class="loader-square"></div>
+          <div class="loader-square"></div>
+        </div>
+        
+        <!-- Harf eşleştirme kısmı -->
+        <p class="has-text-centered">
+          <!-- Her harfi kontrol etmek için döngü -->
+          <span [class]="compare(letter, enteredText[i])" *ngFor="let letter of randomText.split(''); let i = index">{{letter}}</span>
+        </p>
+        
+        <!-- Kullanıcının girdiği metni almak için input -->
+        <div class="field">
+          <input class="input" (input)="getInputValue($event.target.value)" />
+        </div>
+        
+        <!-- Doğru metni girdiğinde görüntülenen bölüm -->
+        <div *ngIf="randomText === enteredText">
+          <!-- Tebrik mesajı -->
+          <h1 class="title">Tebrikler</h1>
+          <h3 class="title">Tekrar Başlamak İçin Butona tıkla</h3>
+          
+          <!-- Oyunu sıfırlamak için buton -->
+          <button class="btn-class-name" (click)="resetGame()">
+            <span class="back"></span>
+            <span class="front"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
